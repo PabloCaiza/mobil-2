@@ -23,5 +23,5 @@ app.get("/hola/:nombre/:apellido", (req, res) => {
     res.send({ nombre, apellido });
 });
 app.listen(PORT, () => {
-    console.log("running application");
+    console.log(`running application ${PORT}`);
 });
