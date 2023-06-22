@@ -6,7 +6,6 @@ const Menu=()=>{
     return (
         <View>
             <ProfileCard/>
-            <Text>hola</Text>
         </View>
     )
 }
