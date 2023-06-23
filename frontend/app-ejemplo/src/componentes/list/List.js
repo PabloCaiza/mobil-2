@@ -1,51 +1,52 @@
 import React, {useEffect, useState} from "react";
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from "react-native";
+import Task from "./Task";
 
 
-const ListComponent=()=>{
-    const [taskItems,setTaskItems]=useState([]);
+const ListComponent = () => {
+    const [taskItems, setTaskItems] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchData()
-    },[])
+    }, [])
 
-    const fetchData=async ()=>{
+    const fetchData = async () => {
         try {
-            const response=await fetch('https://api.unsplash.com/photos/?client_id=ZXjOAAdwefwfYGtyhjJmAerkWnGDxNNnEwTlnHkSqk4')
-            const jsonData=await response.json()
+            const response = await fetch('https://api.unsplash.com/photos/?client_id=tmXX2qlmRsZbsX7eXhvWsY1wfSpKeQj6fU9EQN0fkAw')
+            const jsonData = await response.json()
+            console.log(jsonData)
             setTaskItems(jsonData)
-        }catch (e){
-            console.error('error',e)
+        } catch (e) {
+            console.error('error', e)
         }
     }
-    const Item=({task,i})=>{
+    const Item = ({task, i}) => {
         return (
-            <TouchableOpacity style={styles.peritem} key={i} onPress={()=>{
-                getProfile(task)}}>
-
+            <TouchableOpacity style={styles.perItem} key={i} onPress={() => {
+                getProfile(task)
+            }}>
+                <Task task={task}/>
             </TouchableOpacity>
         )
     }
+
     return (
         <View>
-            {taskItems.length!==0?
+            {taskItems &&
                 <View style={styles.container}>
                     <View style={styles.taskWrapper}>
-                        <Text style={styles.sectionTitle}></Text>
+                        <Text style={styles.sectionTitle}>Se listan los perfiles</Text>
                         <View style={styles.items}>
                             <FlatList
-                             data={taskItems}
-                             renderItem={({item,i})=>{
-                                 <Item task={item} i={i}/>
-                             }}
+                                data={taskItems}
+                                renderItem={({item, i}) => (
+                                    <Item task={item} i={i}/>
+                                )}
                             >
                             </FlatList>
                         </View>
                     </View>
 
-                </View>
-                :
-                <View>
                 </View>
             }
         </View>
@@ -54,9 +55,16 @@ const ListComponent=()=>{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
     },
+    taskWrapper: {},
+    sectionTitle: {},
+    items: {},
+    perItem:{
+
+    }
+
+
 });
 export default ListComponent

@@ -1,11 +1,11 @@
 import React from "react";
-import {View, Text, StyleSheet, Image, Linking} from "react-native";
+import {View, Text, StyleSheet, Image, Linking,TouchableWithoutFeedback} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const twitter = <Icon name={'twitter'} size={30} color={'black'}/>
 const facebook = <Icon name={'facebook'} size={30} color={'black'}/>
 const instagram = <Icon name={'instagram'} size={30} color={'black'}/>
-
+const linkedin = <Icon name={'linkedin'} size={30} color={'black'}/>
 const ProfileCard = () => {
     const user = {
         avatar: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
@@ -23,21 +23,24 @@ const ProfileCard = () => {
             </View>
             <View style={styles.buttonContainer}>
 
-                <Text style={{color: 'blue'}} onPress={() => {
+                <TouchableWithoutFeedback style={{color: 'blue'}} onPress={() => {
                     Linking.openURL('https://facebook.com/')
                 }}>
                     {facebook}
-                </Text>
-                <Text style={{color: 'blue'}} onPress={() => {
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback style={{color: 'blue'}} onPress={() => {
                     Linking.openURL('https://twitter.com/')
                 }}>
                     {twitter}
-                </Text>
-                <Text style={{color: 'blue'}} onPress={() => {
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback style={{color: 'blue'}} onPress={() => {
                     Linking.openURL('https://instagram.com/')
                 }}>
                     {instagram}
-                </Text>
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={()=>Linking.openURL('https://linkedin.com/')}>
+                    {linkedin}
+                </TouchableWithoutFeedback>
 
             </View>
         </View>
@@ -57,13 +60,13 @@ const styles = StyleSheet.create({
     },
     avatarContainer: {
         alignItems: 'center',
-        marginTop: '-75'
+        marginTop: -75
     },
     avatar: {
         width: 150,
         height: 150,
         borderRadius: 75,
-        borderWidth: 5,
+        borderWidth: 10,
         borderColor: 'white'
     },
     name: {
