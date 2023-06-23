@@ -22,6 +22,7 @@ const Navigation = () => {
                     <MaterialCommunityIcons name={'clipboard-list'} color={color} size={size}/>
                 )
             }}/>
+            <Tab.Screen name={'user'}/>
         </Tab.Navigator>
     )
 }
