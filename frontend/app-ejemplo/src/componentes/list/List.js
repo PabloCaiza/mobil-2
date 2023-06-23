@@ -125,10 +125,7 @@ const styles = StyleSheet.create({
     modalText:{
         marginBottom:10,
         textAlign:'center'
-
     }
-
-
 
 });
 export default ListComponent

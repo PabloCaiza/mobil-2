@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet, Image, Text, Linking, TouchableWithoutFeedback} from "react-native";
+import {View, StyleSheet, Image, Text, Linking, TouchableWithoutFeedback, Button} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const instagram = <Icon name={'instagram'} size={30} color={'black'}/>
@@ -29,23 +29,20 @@ const Profile = ({task,closeProfile}) => {
             </View>
             <View style={styles.containerKpi}>
                 <View style={styles.kpiR}>
-                    <Image source={require('')}
+                    <Image source={require('../../../assets/img.png')}
                            style={styles.image2}
                     />
                 </View>
 
             </View>
-            <TouchableWithoutFeedback onPress={closeProfile}>
-                <Text>CERRAR</Text>
-            </TouchableWithoutFeedback>
+            <Button title={'Cerrar'}  onPress={closeProfile}/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     item: {
-        height: '100%',
-        width: '100%',
+        flex:1,
         backgroundColor: 'white',
         borderRadius: 20,
         display: 'flex',
