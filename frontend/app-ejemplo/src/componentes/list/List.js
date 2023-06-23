@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {View, Text, FlatList, TouchableOpacity, StyleSheet} from "react-native";
+import {View, Text, FlatList, TouchableOpacity, StyleSheet,StatusBar,Modal,Alert} from "react-native";
 import Task from "./Task";
+import Profile from "./Profile";
 
 
 const ListComponent = () => {
     const [taskItems, setTaskItems] = useState([]);
-
+    const [showProfile,setShowProfile]=useState(false)
+    const [task,setTask]=useState()
     useEffect(() => {
         fetchData()
     }, [])
@@ -29,6 +31,13 @@ const ListComponent = () => {
             </TouchableOpacity>
         )
     }
+    const closeProfile=()=>{
+        setShowProfile(!showProfile)
+    }
+    const getProfile=(task)=>{
+        setShowProfile(true)
+        setTask(task)
+    }
 
     return (
         <View>
@@ -46,6 +55,26 @@ const ListComponent = () => {
                             </FlatList>
                         </View>
                     </View>
+                    <Modal
+                        transparent={true}
+                        animationType={'slide'}
+                        visible={showProfile}
+                        onRequestClose={()=>{
+                            Alert.alert('modal has been close')
+                            setShowProfile(!showProfile)
+                        }}
+                    >
+                        <View style={styles.centerView}>
+                            <View style={styles.modalView}>
+                                <Text style={styles.modalText}>
+                                    <Profile task={task} closeProfile={closeProfile}/>
+                                </Text>
+
+                            </View>
+
+                        </View>
+
+                    </Modal>
 
                 </View>
             }
@@ -54,16 +83,51 @@ const ListComponent = () => {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor:'#E8EAED',
+        marginTop: StatusBar.currentHeight || 0,
+        display:'flex'
     },
-    taskWrapper: {},
-    sectionTitle: {},
+    taskWrapper: {
+        paddingTop:80,
+        paddingHorizontal:20,
+        height:900
+    },
+    sectionTitle: {
+        fontSize:24,
+        fontWeight:'bold'
+    },
     items: {},
     perItem:{
+    },
+    centerView:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
+        marginTop:22
+    },
+    modalView:{
+        margin:0,
+        backgroundColor:'white',
+        borderRadius:20,
+        padding:35,
+        alignItems:'center',
+        shadowColor:'#000',
+        width:'100%',
+        height:300,
+        shadowOffset:{
+            width:0,
+            height:2
+        },
+        shadowOpacity:0.25,
+        shadowRadius:4,
+        elevation:5
+    },
+    modalText:{
+        marginBottom:10,
+        textAlign:'center'
 
     }
+
 
 
 });
