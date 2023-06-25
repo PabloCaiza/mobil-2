@@ -69,7 +69,6 @@ const ListComponent = () => {
                                 <Text style={styles.modalText}>
                                     <Profile task={task} closeProfile={closeProfile}/>
                                 </Text>
-
                             </View>
 
                         </View>

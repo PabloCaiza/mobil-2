@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import Menu from "./componentes/home/Menu";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import ListComponent from "./componentes/list/List";
-import User from './componentes/user/User'
+import User from './screen/User'
 
 const Tab = createBottomTabNavigator()
 
@@ -23,8 +23,8 @@ const Navigation = () => {
                     <MaterialCommunityIcons name={'clipboard-list'} color={color} size={size}/>
                 )
             }}/>
-            <Tab.Screen name={'user'} component={User} options={{
-                tabBarLabel:'Usuarios',
+            <Tab.Screen name={'nombre'} component={User} options={{
+                tabBarLabel:'Nombre',
                 tabBarIcon: ({color,size})=> (
                         <MaterialCommunityIcons name={'account'} color={color} size={size}/>
                     )
