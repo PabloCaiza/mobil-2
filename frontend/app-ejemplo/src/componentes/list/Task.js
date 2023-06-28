@@ -4,7 +4,7 @@ export default function Task({task}) {
     return (
       <View style={styles.item}>
           <View style={styles.itemLeft}>
-              <Image source={{uri:task.urls.raw}} style={styles.image}/>
+              <Image source={{uri:task.urls.regular}} style={styles.image}/>
               <Text style={styles.itemText}>
                   {task.description}
               </Text>

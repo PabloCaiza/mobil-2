@@ -3,13 +3,13 @@ import {View, StyleSheet, Image, Text, Linking, TouchableWithoutFeedback, Button
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const instagram = <Icon name={'instagram'} size={30} color={'black'}/>
-const linkedin = <Icon name={'linkedin'} size={30} color={'black'}/>
-const Profile = ({task,closeProfile}) => {
+const portafolio_url = <Icon name={'globe'} size={30} color={'black'}/>
+const Profile = ({task, closeProfile}) => {
 
     return (
         <View style={styles.item}>
             <View style={styles.supimage}>
-                <View style={styles.lefSide}>
+                <View style={styles.leftSide}>
                     <Image source={{uri: task.urls.raw}} style={styles.image}
                     />
                 </View>
@@ -17,14 +17,15 @@ const Profile = ({task,closeProfile}) => {
                     <Text style={{color: 'blue'}} onPress={() => Linking.openURL(task.user.portfolio_url)}>
                         {task.user.name}
                     </Text>
-                </View>
-                <View style={styles.redes}>
-                    <Text style={{color: 'blue'}} onPress={() => Linking.openURL(task.user.social.instagram_username)}>
-                        {instagram}
-                    </Text>
-                    <Text style={{color: 'blue'}} onPress={() => Linking.openURL(task.user.portafolio_url)}>
-                        {linkedin}
-                    </Text>
+                    <View style={styles.redes}>
+                        <Text style={{color: 'blue'}}
+                              onPress={() => Linking.openURL(task.user.social.instagram_username)}>
+                            {instagram}
+                        </Text>
+                        <Text style={{color: 'blue'}} onPress={() => Linking.openURL(task.user.portafolio_url)}>
+                            {portafolio_url}
+                        </Text>
+                    </View>
                 </View>
             </View>
             <View style={styles.containerKpi}>
@@ -33,23 +34,24 @@ const Profile = ({task,closeProfile}) => {
                            style={styles.image2}
                     />
                 </View>
-
             </View>
-            <Button title={'Cerrar'}  onPress={closeProfile}/>
+            <Button title={'Cerrar'} onPress={closeProfile}/>
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     item: {
-        flex:1,
+        height: '100%',
+        width: '100%',
         backgroundColor: 'white',
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
     },
-    subimage: {
+    supimage: {
         width: '100%',
         height: '100%',
         flexBasis: '70%',
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     leftSide: {
-        flexBasise: '30%',
+        flexBasics: '50%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'

@@ -122,8 +122,9 @@ const styles = StyleSheet.create({
         elevation:5
     },
     modalText:{
-        marginBottom:10,
-        textAlign:'center'
+        marginBottom:15,
+        textAlign:'center',
+        width:'100%'
     }
 
 });
