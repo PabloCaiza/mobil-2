@@ -5,6 +5,7 @@ import Menu from "./componentes/home/Menu";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import ListComponent from "./componentes/list/List";
 import User from './screen/User'
+import Chat from "./screen/Chat";
 
 const Tab = createBottomTabNavigator()
 
@@ -28,6 +29,12 @@ const Navigation = () => {
                 tabBarIcon: ({color,size})=> (
                         <MaterialCommunityIcons name={'account'} color={color} size={size}/>
                     )
+            }}/>
+            <Tab.Screen name={'openIA'} component={Chat} options={{
+                tabBarLabel:'openIA',
+                tabBarIcon: ({color,size})=> (
+                    <MaterialCommunityIcons name={'ia'} color={color} size={size}/>
+                )
             }}/>
         </Tab.Navigator>
     )
