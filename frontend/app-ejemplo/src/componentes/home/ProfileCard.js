@@ -6,10 +6,11 @@ const twitter = <Icon name={'twitter'} size={30} color={'black'}/>
 const facebook = <Icon name={'facebook'} size={30} color={'black'}/>
 const instagram = <Icon name={'instagram'} size={30} color={'black'}/>
 const linkedin = <Icon name={'linkedin'} size={30} color={'black'}/>
+const tiktok = <Icon name={'sitemap'} size={30} color={'black'}/>
 const ProfileCard = () => {
     const user = {
-        avatar: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
-        coverPhoto: "https://wallpapers.com/images/hd/profile-picture-background-10tprnkqwqif4lyv.jpg",
+        avatar: "https://wallpapercave.com/uwp/uwp3658047.png",
+        coverPhoto: "https://wallpapercave.com/wp/nsu3cSp.jpg",
         name: "Pablo caiza"
     }
     return (
@@ -40,6 +41,9 @@ const ProfileCard = () => {
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={()=>Linking.openURL('https://linkedin.com/')}>
                     {linkedin}
+                </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={()=>Linking.openURL('https://tiktok.com/')}>
+                    {tiktok}
                 </TouchableWithoutFeedback>
 
             </View>

@@ -1,12 +1,5 @@
 import React, {useState} from "react";
 import {TextInput, View, StyleSheet, Text, Button} from "react-native";
-import {OpenAIApi, Configuration} from 'openai'
-
-const configuration = new Configuration({
-    apiKey: 'paste key'
-})
-
-const openai = new OpenAIApi(configuration)
 
 
 const Chat = () => {
@@ -15,13 +8,15 @@ const Chat = () => {
 
     const getResultFromOpenApi = async () => {
         try {
-            const completion = await openai.createCompletion({
-                model: 'text-davinci-003',
-                prompt:prompt,
-                temperature: 0.1
+            const response = await fetch('http://localhost:9004/openapi', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify({prompt})
             })
-            console.log(completion)
-            setResult(completion.data.choices[0].text)
+            const jsonData = await response.json()
+            setResult(`${jsonData.result} y los token utilizados fueron ${jsonData.token} `)
         } catch (error) {
             console.log(error)
         }
@@ -31,10 +26,10 @@ const Chat = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>
-                {'Ingrese Pregunta'}
+                {'Ingrese El numero que desea convertir a binario'}
             </Text>
             <TextInput style={styles.input} value={prompt} onChangeText={setPrompt}/>
-            <Button title={'Generate Result'} onPress={getResultFromOpenApi}/>
+            <Button title={'Enviar'} onPress={getResultFromOpenApi}/>
             <Text style={styles.text}>
                 {result}
             </Text>

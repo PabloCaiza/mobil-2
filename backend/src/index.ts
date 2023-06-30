@@ -4,9 +4,20 @@ import {v4 as uuidv4} from 'uuid';
 
 const app = express()
 app.use(express.json())
-const PORT = 3000
+const PORT = 9004
 app.use(cors())
 
+import {OpenAIApi, Configuration} from 'openai'
+
+const configuration = new Configuration({
+    apiKey: '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'
+})
+const openai = new OpenAIApi(configuration)
+
+const generatePrompt = (numberToConvert: number) => {
+    return ` Tu tienes un rol de convertidor binario y requiero que conviertes este numero ${numberToConvert} a  binario`
+
+}
 
 let names = [
     {
@@ -46,6 +57,18 @@ app.post('/nombres', (req, res) => {
     const item = {...req.body, id: uuidv4()};
     names.push(item)
     res.send(item)
+})
+
+app.post('/openapi', async (req, res) => {
+    const {prompt} = req.body
+    const completion = await openai.createCompletion({
+        model: 'text-davinci-003',
+        prompt: generatePrompt(prompt),
+        temperature: 0.1
+    })
+
+    // @ts-ignore
+    res.send({result: completion.data.choices[0].text.trim(),token:completion.data.usage.total_tokens})
 })
 
 app.delete('/nombres/:id', (req, res) => {
